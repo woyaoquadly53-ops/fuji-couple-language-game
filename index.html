@@ -150,4 +150,1054 @@
     .stat-badge {
       background: var(--paper-bg);
       border: 2px solid var(--paper-border);
-      border-radius: 1
+      border-radius: 14px;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* 左下角：螺旋手账今日任务便签 */
+    .bottom-left-memo {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      width: 245px;
+      padding: 12px 14px;
+      transform: rotate(-1.5deg);
+      border-left: 6px solid var(--ribbon-green);
+    }
+
+    .memo-title {
+      font-weight: 700;
+      font-size: 13.5px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .memo-item {
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    /* 正下方：8格随身背包槽 */
+    .bottom-center-bag {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 12px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .bag-slot {
+      width: 48px;
+      height: 48px;
+      background: #f5ead4;
+      border: 1.5px solid #c9ae88;
+      border-radius: 11px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    .bag-slot:hover { transform: translateY(-3px); }
+
+    .bag-count {
+      position: absolute;
+      bottom: 2px;
+      right: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink-dark);
+      background: rgba(255,255,255,0.85);
+      padding: 0 4px;
+      border-radius: 6px;
+    }
+
+    /* 右下角：四大场景丝带切换按钮 */
+    .bottom-right-nav {
+      position: absolute;
+      bottom: 18px;
+      right: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: auto;
+    }
+
+    .ribbon-btn {
+      padding: 9px 15px;
+      border-radius: 13px;
+      border: 2px solid #b8986e;
+      background: var(--paper-bg);
+      color: var(--ink-dark);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s;
+    }
+
+    .ribbon-btn:hover { transform: translateX(-3px); }
+    .ribbon-btn.active {
+      background: var(--ribbon-green);
+      color: #fff;
+      border-color: #5e825b;
+    }
+
+    /* 场景内可点击气泡热区 */
+    .world-bubble {
+      position: absolute;
+      z-index: 6;
+      background: rgba(255, 250, 240, 0.94);
+      border: 2px solid #c3a47a;
+      border-radius: 14px;
+      padding: 6px 12px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--ink-dark);
+      box-shadow: 0 5px 14px rgba(74, 55, 40, 0.16);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: floatGentle 3.2s ease-in-out infinite;
+    }
+
+    .world-bubble:hover {
+      transform: scale(1.07) translateY(-2px);
+      box-shadow: 0 8px 18px rgba(74, 55, 40, 0.25);
+      border-color: var(--ribbon-pink);
+    }
+
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* 轻巧手账弹窗（答题 / 交易 / 装修 / 换装加词） */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(58, 43, 30, 0.42);
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .journal-modal {
+      width: min(560px, 92vw);
+      max-height: 86vh;
+      overflow-y: auto;
+      background: #fcf6e8;
+      border: 3px solid #c2a177;
+      border-radius: 22px;
+      padding: 20px 24px;
+      box-shadow: 0 18px 45px rgba(45, 32, 20, 0.35);
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px dashed #d4bc9a;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+
+    .close-btn {
+      background: #eadbc3;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--ink-dark);
+    }
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .quiz-option {
+      background: #fffaf0;
+      border: 2px solid #d2b997;
+      border-radius: 13px;
+      padding: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.15s;
+    }
+
+    .quiz-option:hover {
+      background: #f5ebd6;
+      border-color: var(--ribbon-green);
+    }
+
+    .action-btn {
+      background: var(--ribbon-green);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 9px 15px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .action-btn.gold { background: #d99b38; }
+    .action-btn.pink { background: var(--ribbon-pink); }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .shop-card {
+      background: #fffaf0;
+      border: 1.5px solid #d5be9e;
+      border-radius: 14px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .custom-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .custom-form input {
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1.5px solid #cbb18d;
+      background: #fffdf8;
+      font-family: inherit;
+    }
+
+    #toast {
+      position: fixed;
+      top: 76px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(74, 55, 40, 0.92);
+      color: #fff9eb;
+      padding: 9px 18px;
+      border-radius: 20px;
+      font-size: 13.5px;
+      font-weight: 700;
+      z-index: 80;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    #toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div id="game-stage">
+    <!-- 吉卜力风河口湖富士山全屏手绘矢量插画层 -->
+    <svg id="scene-canvas" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"></svg>
+
+    <!-- 场景内可点击气泡热区容器 -->
+    <div id="world-bubbles"></div>
+
+    <!-- 四角手账 HUD -->
+    <div class="hud-layer">
+      <!-- 左上角：双人切换 & 语音问候 -->
+      <div class="hud-card top-left-plaque">
+        <div class="player-switcher">
+          <div id="btn-yingying" class="player-pill active" onclick="switchPlayer('yingying')">
+            <span>👧🏻</span><span>Yingying · 莹莹</span>
+          </div>
+          <div id="btn-reus" class="player-pill" onclick="switchPlayer('reus')">
+            <span>👦🏻</span><span>Reus · 男友</span>
+          </div>
+        </div>
+        <div class="greeting-bar">
+          <span id="greeting-text">こんにちは！今日も一緒に頑張ろう 🌸</span>
+          <button class="speak-btn" onclick="speakGreeting()">🔊 发音</button>
+        </div>
+      </div>
+
+      <!-- 右上角：金币、星星、饲料 -->
+      <div class="top-right-stats">
+        <div class="stat-badge">🪙 <span id="stat-coins">320</span> G</div>
+        <div class="stat-badge">⭐ <span id="stat-stars">5</span></div>
+        <div class="stat-badge">🌾 饲料 <span id="stat-feed">3</span></div>
+      </div>
+
+      <!-- 左下角：手账任务便签 -->
+      <div class="hud-card bottom-left-memo">
+        <div class="memo-title">
+          <span id="memo-heading">📖 今日牧场手账 · Hoy</span>
+        </div>
+        <div class="memo-item" id="memo-body">
+          • 点击草地气泡：答对单词播种/双倍收割<br/>
+          • 点击小动物：答题增加饲料并收获特产<br/>
+          • 集市卖货：敬语/礼貌用语享 1.5 倍高价
+        </div>
+      </div>
+
+      <!-- 正下方：8格随身背包 -->
+      <div class="hud-card bottom-center-bag" id="bag-bar"></div>
+
+      <!-- 右下角：四大场景丝带切换 -->
+      <div class="bottom-right-nav">
+        <button class="ribbon-btn active" id="nav-farm" onclick="switchScene('farm')">🍓 河口湖农场 · Granja</button>
+        <button class="ribbon-btn" id="nav-ranch" onclick="switchScene('ranch')">🐑 牧场与集市 · Mercado</button>
+        <button class="ribbon-btn" id="nav-cottage" onclick="switchScene('cottage')">🏡 湖景木屋 · Cabaña</button>
+        <button class="ribbon-btn" id="nav-wardrobe" onclick="switchScene('wardrobe')">👗 换装与词典 · Vestidor</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 轻巧手账弹窗 -->
+  <div class="modal-backdrop" id="modal-backdrop" onclick="closeModalOnBg(event)">
+    <div class="journal-modal">
+      <div class="modal-header">
+        <strong id="modal-title" style="font-size:16px;">语言闯关 · Desafío</strong>
+        <button class="close-btn" onclick="closeModal()">✕</button>
+      </div>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    // 默认保存状态
+    const defaultState = {
+      player: 'yingying', // 'yingying' | 'reus'
+      scene: 'farm',      // 'farm' | 'ranch' | 'cottage' | 'wardrobe'
+      coins: 320,
+      stars: 5,
+      feed: 3,
+      bag: {
+        strawberry: 2,
+        pumpkin: 1,
+        sunflower: 1,
+        milk: 2,
+        wool: 1,
+        egg: 2
+      },
+      plots: {
+        strawberry: 'ready',
+        pumpkin: 'growing',
+        sunflower: 'empty'
+      },
+      unlockedFurniture: ['rug'],
+      equipped: {
+        yingying: { outfit: 'mint_dress', hat: 'none' },
+        reus: { outfit: 'rust_sweater', hat: 'none' }
+      },
+      ownedOutfits: ['mint_dress', 'rust_sweater'],
+      words: [
+        { zh: '草莓', pinyin: 'cǎoméi', es: 'La fresa', ja: 'いちご (Ichigo)', en: 'Strawberry' },
+        { zh: '南瓜', pinyin: 'nánguā', es: 'La calabaza', ja: 'かぼちゃ (Kabocha)', en: 'Pumpkin' },
+        { zh: '向日葵', pinyin: 'xiàngrìkuí', es: 'El girasol', ja: 'ひまわり (Himawari)', en: 'Sunflower' },
+        { zh: '牛奶', pinyin: 'niúnǎi', es: 'La leche', ja: 'ぎゅうにゅう (Gyūnyū)', en: 'Milk' },
+        { zh: '绵羊', pinyin: 'miányáng', es: 'La oveja', ja: 'ひつじ (Hitsuji)', en: 'Sheep' },
+        { zh: '羊驼', pinyin: 'yángtuó', es: 'La alpaca', ja: 'アルパカ (Arupaka)', en: 'Alpaca' },
+        { zh: '小木屋', pinyin: 'xiǎomùwū', es: 'La cabaña', ja: 'こや (Koya)', en: 'Cottage' },
+        { zh: '富士山', pinyin: 'Fùshìshān', es: 'Monte Fuji', ja: 'ふじさん (Fujisan)', en: 'Mount Fuji' }
+      ],
+      politePhrases: {
+        yingying: [
+          { prompt: '客人买下草莓时，用日语敬语说“非常感谢”：', answer: 'ありがとうございます', lang: 'ja-JP', options: ['ありがとうございます', 'おやすみなさい', 'いただきます', 'はじめまして'] },
+          { prompt: '递上新鲜牛奶时，用日语敬语说“让您久等了”：', answer: 'お待たせいたしました', lang: 'ja-JP', options: ['お待たせいたしました', 'ごちそうさまでした', 'いってきます', 'すみません'] },
+          { prompt: '用西班牙语礼貌地说“请 / 不客气”：', answer: 'Por favor / De nada', lang: 'es-ES', options: ['Por favor / De nada', 'Buenas noches', 'Hasta mañana', 'Lo siento'] }
+        ],
+        reus: [
+          { prompt: 'Saluda en chino hablado ("Hola / ¿Cómo estás?"): ', answer: '你好！ (Nǐ hǎo!)', lang: 'zh-CN', options: ['你好！ (Nǐ hǎo!)', '晚安 (Wǎn ān)', '再见 (Zàijiàn)', '对不起 (Duìbuqǐ)'] },
+          { prompt: 'Da las gracias en chino sencillo ("Muchas gracias"): ', answer: '谢谢！ (Xièxie!)', lang: 'zh-CN', options: ['谢谢！ (Xièxie!)', '早上好 (Zǎoshang hǎo)', '不客气 (Bú kèqi)', '没关系 (Méi guānxi)'] },
+          { prompt: 'Polite English phrase at the farm market ("Here you are, thank you!"): ', answer: 'Here you are, thank you!', lang: 'en-US', options: ['Here you are, thank you!', 'See you tomorrow!', 'Good night!', 'Excuse me, where is it?'] }
+        ]
+      }
+    };
+
+    let state = JSON.parse(localStorage.getItem('fuji_couple_game_v3')) || defaultState;
+
+    function saveState() {
+      localStorage.setItem('fuji_couple_game_v3', JSON.stringify(state));
+      renderHUD();
+    }
+
+    // 语音朗读函数
+    function speakText(text, lang) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const clean = text.replace(/\(.*?\)/g, '').trim();
+      const utter = new SpeechSynthesisUtterance(clean);
+      utter.lang = lang;
+      utter.rate = 0.92;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function speakGreeting() {
+      if (state.player === 'yingying') {
+        speakText('こんにちは！今日も一緒に頑張ろう', 'ja-JP');
+      } else {
+        speakText('你好！今天也一起加油吧', 'zh-CN');
+      }
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 2600);
+    }
+
+    function switchPlayer(p) {
+      state.player = p;
+      document.getElementById('btn-yingying').classList.toggle('active', p === 'yingying');
+      document.getElementById('btn-reus').classList.toggle('active', p === 'reus');
+      saveState();
+      speakGreeting();
+      renderScene();
+    }
+
+    function switchScene(sc) {
+      state.scene = sc;
+      ['farm', 'ranch', 'cottage', 'wardrobe'].forEach(id => {
+        document.getElementById('nav-' + id).classList.toggle('active', id === sc);
+      });
+      saveState();
+      renderScene();
+    }
+
+    function renderHUD() {
+      document.getElementById('stat-coins').textContent = state.coins;
+      document.getElementById('stat-stars').textContent = state.stars;
+      document.getElementById('stat-feed').textContent = state.feed;
+
+      const greetEl = document.getElementById('greeting-text');
+      const memoHead = document.getElementById('memo-heading');
+      const memoBody = document.getElementById('memo-body');
+
+      if (state.player === 'yingying') {
+        greetEl.textContent = 'こんにちは！今日も一緒に頑張ろう 🌸';
+        memoHead.textContent = '📖 Yingying 的学习手账';
+        memoBody.innerHTML = '• 界面：中文 · 挑战：西语 & 日语<br/>• 集市卖货：日语敬语解锁 1.5 倍高价<br/>• 攒金币装扮湖景木屋与情侣穿搭';
+      } else {
+        greetEl.textContent = '¡Hola! 你好！Vamos a cuidar la granja 🌿';
+        memoHead.textContent = '📖 Diario de Reus · 任务';
+        memoBody.innerHTML = '• Idioma: Español → Inglés y Chino básico<br/>• Mercado: Saludos corteses = 1.5x Oro<br/>• Decora la cabaña frente al Monte Fuji';
+      }
+
+      // 渲染 8 格随身背包
+      const icons = {
+        strawberry: '🍓',
+        pumpkin: '🎃',
+        sunflower: '🌻',
+        milk: '🥛',
+        wool: '🧶',
+        egg: '🥚'
+      };
+      const keys = Object.keys(icons);
+      const bagBar = document.getElementById('bag-bar');
+      bagBar.innerHTML = '';
+      for (let i = 0; i < 8; i++) {
+        const k = keys[i];
+        const slot = document.createElement('div');
+        slot.className = 'bag-slot';
+        if (k && state.bag[k] > 0) {
+          slot.innerHTML = `${icons[k]}<span class="bag-count">${state.bag[k]}</span>`;
+          slot.title = `${k}: ${state.bag[k]}`;
+          slot.onclick = () => openMarketModal();
+        }
+        bagBar.appendChild(slot);
+      }
+    }
+
+    // 绘制吉卜力水彩背景与高低差情侣人物
+    function drawSceneArtwork() {
+      const svg = document.getElementById('scene-canvas');
+      const yOutfit = state.equipped.yingying.outfit;
+      const rOutfit = state.equipped.reus.outfit;
+      const girlDressColor = yOutfit === 'sakura_kimono' ? '#f3a6b8' : (yOutfit === 'overalls' ? '#7aa3c4' : '#96bfa0');
+      const boyTopColor = rOutfit === 'blue_cardigan' ? '#6d92b5' : (rOutfit === 'yukata' ? '#586d8a' : '#c96f48');
+
+      if (state.scene === 'cottage') {
+        // 湖景木屋室内装修场景
+        const hasSofa = state.unlockedFurniture.includes('sofa');
+        const hasBookshelf = state.unlockedFurniture.includes('bookshelf');
+        const hasCat = state.unlockedFurniture.includes('cat');
+        const hasLamp = state.unlockedFurniture.includes('lamp');
+
+        svg.innerHTML = `
+          <defs>
+            <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e9d5b7"/>
+              <stop offset="100%" stop-color="#d6ba94"/>
+            </linearGradient>
+            <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#b8895a"/>
+              <stop offset="100%" stop-color="#96683e"/>
+            </linearGradient>
+          </defs>
+          <rect width="1600" height="620" fill="url(#wallGrad)"/>
+          <rect y="620" width="1600" height="280" fill="url(#floorGrad)"/>
+          <!-- 木梁 -->
+          <rect x="0" y="0" width="1600" height="36" fill="#8b5e38"/>
+          <rect x="240" y="0" width="28" height="620" fill="#9c6c44"/>
+          <rect x="1330" y="0" width="28" height="620" fill="#9c6c44"/>
+          <!-- 中央推窗见富士山与河口湖 -->
+          <g transform="translate(520, 110)">
+            <rect width="560" height="340" rx="12" fill="#bfe2f2" stroke="#7c5230" stroke-width="14"/>
+            <polygon points="80,240 280,75 480,240" fill="#6b8ba4"/>
+            <polygon points="215,128 280,75 345,128 310,142 280,122 250,144" fill="#ffffff"/>
+            <rect x="0" y="235" width="560" height="105" fill="#7bb6cc"/>
+            <path d="M0,255 Q180,235 360,255 T560,245 L560,340 L0,340 Z" fill="#8ec07c"/>
+            <line x1="280" y1="0" x2="280" y2="340" stroke="#7c5230" stroke-width="10"/>
+            <line x1="0" y1="170" x2="560" y2="170" stroke="#7c5230" stroke-width="8"/>
+          </g>
+          <!-- 温暖编织地毯 -->
+          <ellipse cx="800" cy="740" rx="340" ry="85" fill="#e8cfa8" stroke="#c48b66" stroke-width="6" stroke-dasharray="14 8"/>
+          <!-- 可解锁家具：书架 -->
+          ${hasBookshelf ? `
+            <g transform="translate(1120, 260)">
+              <rect width="170" height="360" rx="8" fill="#8f5d36" stroke="#5e3a1e" stroke-width="4"/>
+              <rect x="14" y="25" width="142" height="90" fill="#6e4425"/>
+              <rect x="14" y="135" width="142" height="90" fill="#6e4425"/>
+              <rect x="14" y="245" width="142" height="90" fill="#6e4425"/>
+              <rect x="24" y="45" width="18" height="68" fill="#d98a8c"/>
+              <rect x="46" y="50" width="16" height="63" fill="#7fa37c"/>
+              <rect x="66" y="42" width="20" height="71" fill="#e6b85c"/>
+              <rect x="92" y="52" width="18" height="61" fill="#7aa3b8"/>
+            </g>` : ''}
+          <!-- 可解锁家具：绿色布艺沙发 -->
+          ${hasSofa ? `
+            <g transform="translate(940, 510)">
+              <rect x="10" y="30" width="220" height="80" rx="18" fill="#7fa37c" stroke="#537050" stroke-width="4"/>
+              <rect x="0" y="75" width="240" height="55" rx="14" fill="#92b88f" stroke="#537050" stroke-width="4"/>
+              ${hasCat ? `<g transform="translate(145, 52)"><ellipse cx="26" cy="18" rx="22" ry="14" fill="#e8a45c"/><circle cx="12" cy="12" r="10" fill="#e8a45c"/><polygon points="5,4 9,-4 14,5" fill="#e8a45c"/><polygon points="14,5 19,-4 22,5" fill="#e8a45c"/></g>` : ''}
+            </g>` : ''}
+          <!-- 可解锁家具：暖光落地灯 -->
+          ${hasLamp ? `
+            <g transform="translate(360, 320)">
+              <line x1="40" y1="60" x2="40" y2="300" stroke="#6e4726" stroke-width="8"/>
+              <ellipse cx="40" cy="300" rx="34" ry="10" fill="#6e4726"/>
+              <polygon points="10,70 70,70 56,15 24,15" fill="#fae29c" stroke="#c99642" stroke-width="3"/>
+            </g>` : ''}
+          ${renderCoupleSVG(730, 530, girlDressColor, boyTopColor)}
+        `;
+        return;
+      }
+
+      // 户外河口湖 + 富士山全景（农场 / 牧场 / 试衣间背景）
+      svg.innerHTML = `
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#a8d5ec"/>
+            <stop offset="65%" stop-color="#e7f3ea"/>
+            <stop offset="100%" stop-color="#f7eed8"/>
+          </linearGradient>
+          <linearGradient id="lakeGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7ab6cf"/>
+            <stop offset="100%" stop-color="#9ad0dc"/>
+          </linearGradient>
+          <linearGradient id="meadowGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#a9cf7e"/>
+            <stop offset="100%" stop-color="#84b362"/>
+          </linearGradient>
+        </defs>
+        <!-- 天空与云朵 -->
+        <rect width="1600" height="450" fill="url(#skyGrad)"/>
+        <g fill="#ffffff" opacity="0.82">
+          <ellipse cx="260" cy="120" rx="95" ry="28"/><ellipse cx="320" cy="110" rx="70" ry="24"/>
+          <ellipse cx="1290" cy="135" rx="110" ry="30"/><ellipse cx="1220" cy="125" rx="75" ry="22"/>
+        </g>
+        <!-- 富士山 -->
+        <polygon points="430,395 800,120 1170,395" fill="#6d8ca6"/>
+        <polygon points="682,208 800,120 918,208 882,226 848,205 800,232 752,204 716,225" fill="#ffffff"/>
+        <!-- 远山与河口湖 -->
+        <path d="M0,385 Q320,345 640,390 T1600,375 L1600,480 L0,480 Z" fill="#82a878"/>
+        <rect y="395" width="1600" height="95" fill="url(#lakeGrad)"/>
+        <!-- 湖畔木栈道 -->
+        <g transform="translate(560, 445)">
+          <rect x="0" y="0" width="130" height="14" rx="4" fill="#9c6e44"/>
+          <rect x="18" y="14" width="10" height="24" fill="#734d2c"/>
+          <rect x="102" y="14" width="10" height="24" fill="#734d2c"/>
+        </g>
+        <!-- 牧场草地 -->
+        <path d="M0,475 Q500,455 1000,478 T1600,468 L1600,900 L0,900 Z" fill="url(#meadowGrad)"/>
+        <!-- 樱花树（左侧） -->
+        <g transform="translate(130, 260)">
+          <path d="M65,230 Q72,150 55,95 M68,165 Q105,135 125,115" stroke="#7a5234" stroke-width="16" fill="none" stroke-linecap="round"/>
+          <circle cx="55" cy="85" r="78" fill="#f7bfd0"/>
+          <circle cx="115" cy="105" r="62" fill="#fad2de"/>
+          <circle cx="10" cy="110" r="56" fill="#f4aec4"/>
+        </g>
+        <!-- 温馨谷仓木屋（右侧） -->
+        <g transform="translate(1220, 310)">
+          <rect x="25" y="95" width="210" height="145" rx="6" fill="#a8774c" stroke="#664325" stroke-width="4"/>
+          <polygon points="10,100 130,20 250,100" fill="#805330" stroke="#54341b" stroke-width="4"/>
+          <rect x="98" y="145" width="64" height="95" fill="#7a5232" stroke="#54341b" stroke-width="3"/>
+          <rect x="46" y="130" width="36" height="36" fill="#fbe7a1" stroke="#54341b" stroke-width="3"/>
+          <rect x="178" y="130" width="36" height="36" fill="#fbe7a1" stroke="#54341b" stroke-width="3"/>
+        </g>
+        <!-- 木栅栏 -->
+        <g stroke="#855a36" stroke-width="6" fill="#a6764c">
+          <rect x="110" y="545" width="340" height="10" rx="4"/>
+          <rect x="140" y="520" width="14" height="65" rx="4"/>
+          <rect x="240" y="520" width="14" height="65" rx="4"/>
+          <rect x="340" y="520" width="14" height="65" rx="4"/>
+          <rect x="420" y="520" width="14" height="65" rx="4"/>
+        </g>
+        <!-- 田畦与作物 -->
+        <g transform="translate(210, 620)">
+          <rect x="0" y="0" width="260" height="120" rx="18" fill="#8c623e" stroke="#6b482b" stroke-width="4"/>
+          <circle cx="55" cy="45" r="14" fill="#e65353"/><circle cx="125" cy="45" r="14" fill="#e65353"/><circle cx="195" cy="45" r="14" fill="#e65353"/>
+          <circle cx="75" cy="85" r="15" fill="#eb8c38"/><circle cx="155" cy="85" r="15" fill="#eb8c38"/>
+        </g>
+        <!-- 可爱牧场小动物（绵羊、羊驼、柴犬） -->
+        <g transform="translate(470, 545)">
+          <ellipse cx="45" cy="32" rx="34" ry="24" fill="#fffdf7" stroke="#b8a996" stroke-width="3"/>
+          <circle cx="16" cy="24" r="14" fill="#5e4b3c"/>
+          <line x1="30" y1="52" x2="30" y2="68" stroke="#5e4b3c" stroke-width="5"/>
+          <line x1="60" y1="52" x2="60" y2="68" stroke="#5e4b3c" stroke-width="5"/>
+        </g>
+        <g transform="translate(1040, 560)">
+          <ellipse cx="52" cy="48" rx="38" ry="26" fill="#f7efe1" stroke="#bfa98e" stroke-width="3"/>
+          <rect x="18" y="8" width="20" height="44" rx="10" fill="#f7efe1" stroke="#bfa98e" stroke-width="3"/>
+          <circle cx="26" cy="10" r="14" fill="#f7efe1" stroke="#bfa98e" stroke-width="3"/>
+        </g>
+        <!-- 萌萌小柴犬 -->
+        <g transform="translate(935, 655)">
+          <ellipse cx="32" cy="36" rx="22" ry="18" fill="#e09a56"/>
+          <circle cx="32" cy="16" r="17" fill="#e09a56"/>
+          <ellipse cx="32" cy="20" rx="11" ry="8" fill="#fff7e8"/>
+          <polygon points="18,4 22,-8 28,4" fill="#e09a56"/>
+          <polygon points="36,4 42,-8 46,4" fill="#e09a56"/>
+          <circle cx="26" cy="14" r="2.5" fill="#3a281c"/>
+          <circle cx="38" cy="14" r="2.5" fill="#3a281c"/>
+        </g>
+        <!-- 情侣主角：男生高大挺拔，女生比他矮一个头 -->
+        ${renderCoupleSVG(720, 520, girlDressColor, boyTopColor)}
+      `;
+    }
+
+    function renderCoupleSVG(x, y, girlColor, boyColor) {
+      return `
+        <g transform="translate(${x}, ${y})">
+          <!-- 女生 Yingying（比男生矮一个头，双麻花辫） -->
+          <g transform="translate(0, 42)">
+            <!-- 麻花辫 -->
+            <rect x="14" y="34" width="9" height="36" rx="4" fill="#593c28"/>
+            <rect x="57" y="34" width="9" height="36" rx="4" fill="#593c28"/>
+            <!-- 连衣裙 -->
+            <polygon points="24,62 56,62 66,125 14,125" fill="${girlColor}" stroke="#4a3728" stroke-width="2.5"/>
+            <!-- 腿与靴子 -->
+            <rect x="28" y="125" width="8" height="28" fill="#f7d5be"/>
+            <rect x="44" y="125" width="8" height="28" fill="#f7d5be"/>
+            <rect x="25" y="148" width="13" height="12" rx="4" fill="#7d5336"/>
+            <rect x="42" y="148" width="13" height="12" rx="4" fill="#7d5336"/>
+            <!-- 头部与笑脸 -->
+            <circle cx="40" cy="34" r="23" fill="#fde0cc" stroke="#4a3728" stroke-width="2.5"/>
+            <path d="M17,32 Q22,10 40,10 Q58,10 63,32 Q50,22 40,26 Q28,22 17,32 Z" fill="#593c28"/>
+            <circle cx="32" cy="35" r="2.6" fill="#3b281c"/>
+            <circle cx="48" cy="35" r="2.6" fill="#3b281c"/>
+            <circle cx="27" cy="40" r="3.5" fill="#f29b9b" opacity="0.65"/>
+            <circle cx="53" cy="40" r="3.5" fill="#f29b9b" opacity="0.65"/>
+            <path d="M36,42 Q40,46 44,42" stroke="#b85d5d" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- 男生 Reus（明显高大挺拔，高出一个头） -->
+          <g transform="translate(92, 0)">
+            <!-- 上衣 -->
+            <rect x="20" y="68" width="54" height="74" rx="14" fill="${boyColor}" stroke="#4a3728" stroke-width="2.5"/>
+            <!-- 牛仔长裤与靴子 -->
+            <rect x="25" y="140" width="18" height="52" rx="5" fill="#4f6d8a" stroke="#364b61" stroke-width="2"/>
+            <rect x="51" y="140" width="18" height="52" rx="5" fill="#4f6d8a" stroke="#364b61" stroke-width="2"/>
+            <rect x="22" y="188" width="23" height="14" rx="5" fill="#6b4428"/>
+            <rect x="49" y="188" width="23" height="14" rx="5" fill="#6b4428"/>
+            <!-- 头部与微卷棕发 -->
+            <circle cx="47" cy="36" r="25" fill="#f7d3ba" stroke="#4a3728" stroke-width="2.5"/>
+            <path d="M21,34 Q24,8 47,8 Q70,8 73,34 Q60,20 47,24 Q33,20 21,34 Z" fill="#69452c"/>
+            <circle cx="38" cy="37" r="2.8" fill="#3b281c"/>
+            <circle cx="56" cy="37" r="2.8" fill="#3b281c"/>
+            <path d="M42,45 Q47,50 52,45" stroke="#9e5347" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+      `;
+    }
+
+    // 渲染场景内可点击气泡热区
+    function renderScene() {
+      drawSceneArtwork();
+      const box = document.getElementById('world-bubbles');
+      box.innerHTML = '';
+
+      if (state.scene === 'farm') {
+        addBubble(box, '22%', '63%', '🍓 草莓田 · Fresa (点击答题播种/收割)', () => openCropChallenge('strawberry'));
+        addBubble(box, '28%', '75%', '🎃 南瓜田 · Calabaza', () => openCropChallenge('pumpkin'));
+        addBubble(box, '68%', '64%', '🌻 向日葵 · Girasol', () => openCropChallenge('sunflower'));
+        addBubble(box, '77%', '46%', '🏡 进入湖景木屋 · Entrar', () => switchScene('cottage'));
+      } else if (state.scene === 'ranch') {
+        addBubble(box, '27%', '57%', '🐑 绵羊 · Oveja (答题产饲料/剪羊毛)', () => openAnimalChallenge('wool', '绵羊 · La oveja'));
+        addBubble(box, '63%', '58%', '🦙 羊驼 · Alpaca (喂养得金币)', () => openAnimalChallenge('milk', '羊驼 · La alpaca'));
+        addBubble(box, '58%', '73%', '🐕 小柴犬 · Perrito (互动赚星星)', () => openAnimalChallenge('egg', '小柴犬 · Perrito'));
+        addBubble(box, '75%', '50%', '🧺 湖畔集市卖货 · Mercado (1.5x加成)', () => openMarketModal());
+      } else if (state.scene === 'cottage') {
+        addBubble(box, '63%', '56%', '🛋️ 布置家具商店 · Tienda de muebles', () => openFurnitureModal());
+        addBubble(box, '24%', '54%', '💡 选购暖光落地灯 · Lámpara', () => openFurnitureModal());
+        addBubble(box, '48%', '74%', '👗 打开木屋试衣镜 · Vestidor', () => switchScene('wardrobe'));
+      } else if (state.scene === 'wardrobe') {
+        addBubble(box, '38%', '56%', '👗 更换情侣服装 · Cambiar ropa', () => openWardrobeModal());
+        addBubble(box, '60%', '56%', '📖 专属四语词库 & 添加新词 · Diccionario', () => openDictionaryModal());
+      }
+    }
+
+    function addBubble(parent, left, top, label, onClick) {
+      const el = document.createElement('div');
+      el.className = 'world-bubble';
+      el.style.left = left;
+      el.style.top = top;
+      el.textContent = label;
+      el.onclick = onClick;
+      parent.appendChild(el);
+    }
+
+    // 多语言闯关弹窗（播种/收割）
+    function openCropChallenge(cropKey) {
+      const word = state.words[Math.floor(Math.random() * state.words.length)];
+      const isYing = state.player === 'yingying';
+      const targetLang = isYing ? (Math.random() > 0.5 ? 'es' : 'ja') : (Math.random() > 0.5 ? 'en' : 'zh');
+      const langCode = { es: 'es-ES', ja: 'ja-JP', en: 'en-US', zh: 'zh-CN' }[targetLang];
+      const langName = { es: '西班牙语 Español', ja: '日语 日本語', en: '英语 English', zh: '中文口语 Chino' }[targetLang];
+
+      const questionText = isYing
+        ? `【${word.zh}】的 ${langName} 怎么说？`
+        : `¿Cómo se dice "${word.es}" en ${langName}?`;
+
+      const correctAns = targetLang === 'zh' ? `${word.zh} (${word.pinyin})` : word[targetLang];
+      const distractors = state.words
+        .filter(w => w.zh !== word.zh)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3)
+        .map(w => targetLang === 'zh' ? `${w.zh} (${w.pinyin})` : w[targetLang]);
+
+      const options = [correctAns, ...distractors].sort(() => 0.5 - Math.random());
+
+      openModal(
+        isYing ? '🌱 单词唤醒丰收 · Yingying 回合' : '🌱 Cosecha de Palabras · Turno de Reus',
+        `
+          <div style="font-size:15px;font-weight:700;margin-bottom:8px;">${questionText}</div>
+          <button class="speak-btn" onclick="speakText('${correctAns}', '${langCode}')">🔊 听目标发音</button>
+          <div class="option-grid">
+            ${options.map(opt => `
+              <div class="quiz-option" onclick="handleCropAnswer('${opt === correctAns}', '${cropKey}', '${correctAns}', '${langCode}')">
+                <span>${opt}</span>
+                <span onclick="event.stopPropagation();speakText('${opt}','${langCode}')">🔊</span>
+              </div>
+            `).join('')}
+          </div>
+          <div style="margin-top:12px;font-size:12px;color:#7a604b;">
+            💡 提示：答对直接双倍收获作物 +1 语言星星！
+          </div>
+        `
+      );
+    }
+
+    function handleCropAnswer(isCorrect, cropKey, ans, langCode) {
+      speakText(ans, langCode);
+      if (isCorrect === 'true') {
+        state.bag[cropKey] = (state.bag[cropKey] || 0) + 2;
+        state.stars += 1;
+        saveState();
+        closeModal();
+        showToast('🎉 答对啦！双倍收获 +2 作物，⭐ +1');
+      } else {
+        showToast('再试一次哦，或者点 🔊 听听发音提示~');
+      }
+    }
+
+    // 牧场小动物答题产饲料
+    function openAnimalChallenge(productKey, title) {
+      const word = state.words[Math.floor(Math.random() * state.words.length)];
+      const isYing = state.player === 'yingying';
+      const targetLang = isYing ? 'es' : 'en';
+      const langCode = isYing ? 'es-ES' : 'en-US';
+      const correctAns = word[targetLang];
+      const distractors = state.words.filter(w => w.zh !== word.zh).sort(() => 0.5 - Math.random()).slice(0, 3).map(w => w[targetLang]);
+      const options = [correctAns, ...distractors].sort(() => 0.5 - Math.random());
+
+      openModal(
+        `🐾 喂养 ${title}`,
+        `
+          <div style="font-size:14.5px;font-weight:700;">
+            ${isYing ? `答对单词即可制作饲料并收获特产：【${word.zh}】的西语是？` : `Responde para conseguir alimento: "${word.es}" en inglés es:`}
+          </div>
+          <div class="option-grid">
+            ${options.map(opt => `
+              <div class="quiz-option" onclick="handleAnimalAnswer('${opt === correctAns}', '${productKey}', '${correctAns}', '${langCode}')">
+                <span>${opt}</span>
+                <span onclick="event.stopPropagation();speakText('${opt}','${langCode}')">🔊</span>
+              </div>
+            `).join('')}
+          </div>
+        `
+      );
+    }
+
+    function handleAnimalAnswer(isCorrect, productKey, ans, langCode) {
+      speakText(ans, langCode);
+      if (isCorrect === 'true') {
+        state.feed += 1;
+        state.bag[productKey] = (state.bag[productKey] || 0) + 1;
+        state.coins += 25;
+        saveState();
+        closeModal();
+        showToast('🌾 饲料 +1，收获牧场特产并获得 25 金币！');
+      } else {
+        showToast('小动物歪了歪头，再选一次试试看~');
+      }
+    }
+
+    // 集市卖货（支持日语敬语 / 简单中文口语 1.5 倍高价）
+    function openMarketModal() {
+      const prices = { strawberry: 40, pumpkin: 55, sunflower: 50, milk: 60, wool: 75, egg: 35 };
+      const names = { strawberry: '🍓 草莓', pumpkin: '🎃 南瓜', sunflower: '🌻 向日葵', milk: '🥛 鲜牛奶', wool: '🧶 绵羊毛', egg: '🥚 牧场鸡蛋' };
+      let totalBase = 0;
+      Object.keys(prices).forEach(k => { totalBase += (state.bag[k] || 0) * prices[k]; });
+
+      const list = state.politePhrases[state.player];
+      const phrase = list[Math.floor(Math.random() * list.length)];
+
+      openModal(
+        '🧺 河口湖畔集市交易 · Mercado',
+        `
+          <div style="margin-bottom:10px;font-size:13.5px;">
+            当前背包可售特产总价值：<strong>${totalBase} G</strong>（礼貌用语加成后：<strong style="color:#c96f48;">${Math.round(totalBase * 1.5)} G</strong>）
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
+            ${Object.keys(prices).map(k => `<span style="background:#f5ead4;padding:4px 9px;border-radius:8px;font-size:12px;">${names[k]} × ${state.bag[k] || 0}</span>`).join('')}
+          </div>
+          ${totalBase === 0 ? '<p>背包空空如也，先去农场或牧场答题收获吧！</p>' : `
+            <div style="background:#fff9eb;padding:12px;border-radius:14px;border:1.5px dashed #d4a657;">
+              <div style="font-weight:700;font-size:13.5px;margin-bottom:6px;">✨ ${phrase.prompt}</div>
+              <div class="option-grid">
+                ${phrase.options.map(opt => `
+                  <div class="quiz-option" onclick="sellAllWithBonus('${opt === phrase.answer}', ${totalBase}, '${opt}', '${phrase.lang}')">
+                    <span>${opt}</span>
+                    <span onclick="event.stopPropagation();speakText('${opt}','${phrase.lang}')">🔊</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+            <button class="action-btn" onclick="sellAllNormal(${totalBase})">直接普通卖出 (${totalBase} G)</button>
+          `}
+        `
+      );
+    }
+
+    function sellAllNormal(base) {
+      Object.keys(state.bag).forEach(k => state.bag[k] = 0);
+      state.coins += base;
+      saveState();
+      closeModal();
+      showToast(`🪙 售出成功！获得 ${base} 金币`);
+    }
+
+    function sellAllWithBonus(isBonus, base, ans, lang) {
+      speakText(ans, lang);
+      const earned = isBonus === 'true' ? Math.round(base * 1.5) : base;
+      Object.keys(state.bag).forEach(k => state.bag[k] = 0);
+      state.coins += earned;
+      if (isBonus === 'true') state.stars += 1;
+      saveState();
+      closeModal();
+      showToast(isBonus === 'true' ? `🌟 礼貌用语太棒了！1.5倍高价卖出 ${earned} G！` : `🪙 售出成功，获得 ${earned} G`);
+    }
+
+    // 室内家具购买与装扮
+    function openFurnitureModal() {
+      const items = [
+        { id: 'sofa', name: '🛋️ 森林绿布艺沙发 · Sofá', price: 180 },
+        { id: 'bookshelf', name: '📚 四语藏书木柜 · Estantería', price: 220 },
+        { id: 'lamp', name: '💡 暖光落地灯 · Lámpara', price: 140 },
+        { id: 'cat', name: '🐈 打盹橘猫伙伴 · Gatito', price: 260 }
+      ];
+      openModal(
+        '🏡 富士山木屋家具目录 · Decoración',
+        `
+          <div class="shop-grid">
+            ${items.map(it => {
+              const owned = state.unlockedFurniture.includes(it.id);
+              return `
+                <div class="shop-card">
+                  <strong>${it.name}</strong>
+                  <span style="font-size:12.5px;color:#7a604b;">价格：${it.price} G</span>
+                  <button class="action-btn ${owned ? '' : 'gold'}" ${owned ? 'disabled' : ''} onclick="buyFurniture('${it.id}', ${it.price})">
+                    ${owned ? '✅ 已摆入木屋' : '购买并布置'}
+                  </button>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `
+      );
+    }
+
+    function buyFurniture(id, price) {
+      if (state.coins < price) {
+        showToast('金币还差一点点，去集市卖点特产吧！');
+        return;
+      }
+      state.coins -= price;
+      state.unlockedFurniture.push(id);
+      saveState();
+      renderScene();
+      openFurnitureModal();
+      showToast('🏡 新家具已摆进你们的湖景木屋啦！');
+    }
+
+    // 情侣换装系统
+    function openWardrobeModal() {
+      const outfits = [
+        { id: 'mint_dress', who: 'yingying', name: '🌿 薄荷绿田园裙 (Yingying)', cost: 0 },
+        { id: 'sakura_kimono', who: 'yingying', name: '🌸 河口湖樱花和风裙 (Yingying)', cost: 3 },
+        { id: 'overalls', who: 'yingying', name: '👖 丹宁背带牧场装 (Yingying)', cost: 2 },
+        { id: 'rust_sweater', who: 'reus', name: '🧶 焦糖暖绒毛衣 (Reus)', cost: 0 },
+        { id: 'blue_cardigan', who: 'reus', name: '🧥 富士山湖蓝针织衫 (Reus)', cost: 3 },
+        { id: 'yukata', who: 'reus', name: '🎋 日式靛蓝休闲装 (Reus)', cost: 4 }
+      ];
+
+      openModal(
+        '👗 情侣试衣镜 · Vestidor (消耗语言星星 ⭐)',
+        `
+          <div class="shop-grid">
+            ${outfits.map(o => {
+              const owned = state.ownedOutfits.includes(o.id);
+              const isEquipped = state.equipped[o.who].outfit === o.id;
+              return `
+                <div class="shop-card">
+                  <strong>${o.name}</strong>
+                  <span style="font-size:12px;color:#7a604b;">${o.cost === 0 ? '初始服装' : `解锁需要：⭐ ${o.cost}`}</span>
+                  <button class="action-btn ${isEquipped ? '' : 'pink'}" onclick="equipOutfit('${o.who}', '${o.id}', ${o.cost})">
+                    ${isEquipped ? '✨ 当前穿着中' : (owned ? '换上这件' : `解锁并换上 (⭐${o.cost})`)}
+                  </button>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `
+      );
+    }
+
+    function equipOutfit(who, id, cost) {
+      if (!state.ownedOutfits.includes(id)) {
+        if (state.stars < cost) {
+          showToast('语言星星不够哦，去答题收割作物就能获得星星！');
+          return;
+        }
+        state.stars -= cost;
+        state.ownedOutfits.push(id);
+      }
+      state.equipped[who].outfit = id;
+      saveState();
+      renderScene();
+      openWardrobeModal();
+      showToast('👗 换装成功！画面里的造型已同步更新');
+    }
+
+    // 情侣自定义词库（可无限添加新单词）
+    function openDictionaryModal() {
+      openModal(
+        '📖 情侣四语词库 & 自定义加词 · Diccionario',
+        `
+          <div style="font-size:13px;margin-bottom:8px;">添加你们日常学到的新单词，立刻变成农场里的新题目：</div>
+          <div class="custom-form">
+            <input id="in-zh" placeholder="中文 (例: 咖啡)"/>
+            <input id="in-py" placeholder="拼音 (例: kāfēi)"/>
+            <input id="in-es" placeholder="西班牙语 (例: El café)"/>
+            <input id="in-ja" placeholder="日语 (例: コーヒー)"/>
+            <input id="in-en" placeholder="英语 (例: Coffee)" style="grid-column: span 2;"/>
+          </div>
+          <button class="action-btn" onclick="addCustomWord()">➕ 添加到我们的词库</button>
+          <div style="margin-top:14px;max-height:210px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;">
+            ${state.words.map(w => `
+              <div style="background:#fffaf0;padding:7px 10px;border-radius:10px;border:1px solid #dcc5a4;font-size:12.5px;display:flex;justify-content:space-between;">
+                <span><strong>${w.zh}</strong> (${w.pinyin}) · ${w.es} · ${w.ja} · ${w.en}</span>
+                <span style="cursor:pointer;" onclick="speakText('${w.es}','es-ES')">🔊</span>
+              </div>
+            `).join('')}
+          </div>
+        `
+      );
+    }
+
+    function addCustomWord() {
+      const zh = document.getElementById('in-zh').value.trim();
+      const pinyin = document.getElementById('in-py').value.trim() || zh;
+      const es = document.getElementById('in-es').value.trim();
+      const ja = document.getElementById('in-ja').value.trim();
+      const en = document.getElementById('in-en').value.trim();
+      if (!zh || !es || !ja || !en) {
+        showToast('请把四种语言都填完整哦~');
+        return;
+      }
+      state.words.unshift({ zh, pinyin, es, ja, en });
+      saveState();
+      openDictionaryModal();
+      showToast(`📖 已添加新词「${zh} / ${es}」！`);
+    }
+
+    function openModal(title, html) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-content').innerHTML = html;
+      document.getElementById('modal-backdrop').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('modal-backdrop').classList.remove('open');
+    }
+
+    function closeModalOnBg(e) {
+      if (e.target.id === 'modal-backdrop') closeModal();
+    }
+
+    // 初始化
+    renderHUD();
+    renderScene();
+  </script>
+</body>
+</html>
